@@ -1,7 +1,7 @@
 const App = require(global.appRoot + '/app'),
   router = App.Express.Router();
 
-if (process.env.SITE_PASSWORD) {
+if ( process.env.SITE_PASSWORD ) {
   router.post('/login', (req, res, next) => {
     if (process.env.SITE_PASSWORD === req.body.password) {
       res.cookie('password', req.body.password , {

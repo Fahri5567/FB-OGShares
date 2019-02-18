@@ -32,43 +32,46 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
       removeAllTable();
-      const data = apps[parseInt(formData.app, 10)];
 
-      if (!data) {
-        alert('Aplikasi belum dipilih!');
-        return;
-      }
+      let app = null;
+      let appIndex = 0;
+      const tableRow = [];
 
-      try {
-        const share = new Share(data.appId, data.url);
+      for ( appIndex; appIndex < apps.length; appIndex++ ) {
+        app = apps[appIndex];
+        try {
+          const share = new Share(app.appId, app.url);
 
-        const url = share.build({
-          'url': formData.url ? formData.url : '',
-          'image': formData.image ? formData.image : '',
-          'title': formData.title,
-          'description': formData.description
-        });
+          const url = share.build({
+            'url': formData.url ? formData.url : '',
+            'image': formData.image ? formData.image : '',
+            'title': formData.title,
+            'description': formData.description
+          });
 
-        const table = createTable([
-          {
-            'title': data.title,
+          tableRow.push({
+            'title': app.title,
             'url': url
+          });
+        } catch (error) {
+          console.error(error);
+          if ('Parameter URL is required' === error.message) {
+            alert('URL Wajib di isi!');
           }
-        ]);
-        tableWrapper.appendChild(table);
-      } catch (error) {
-        console.error(error);
-        if ('Parameter URL is required' === error.message) {
-          alert('URL Wajib di isi!');
-        }
-        else if ('Parameter image is required' === error.message) {
-          alert('Image Wajib di isi!');
-        }
-        else {
-          alert(error.message);
+          else if ('Parameter image is required' === error.message) {
+            alert('Image Wajib di isi!');
+          }
+          else {
+            alert(error.message);
+          }
+          break;
         }
       }
+
+      const table = createTable(tableRow);
+
       tableWrapper.removeChild(loading);
+      tableWrapper.appendChild(table);
     }, false);
   }
 });

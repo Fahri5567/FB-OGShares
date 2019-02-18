@@ -23,7 +23,7 @@ class App {
       res.locals.siteName = process.env.siteName || process.env.SITE_NAME || 'Name';
       res.locals.siteTitle = process.env.siteTitle || process.env.SITE_TITLE || 'Title';
       res.locals.siteSlogan = process.env.siteSlogan || process.env.SITE_SLOGAN || 'Description';
-      res.locals.siteFooter = process.env.SITE_FOOTER || 'yes';
+      res.locals.siteFooter = process.env.SITE_FOOTER === 'no' ? false : true;
       res.locals.pjson = pjson;
 
       try {

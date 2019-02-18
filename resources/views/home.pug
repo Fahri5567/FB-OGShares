@@ -2,12 +2,12 @@ extends layouts/defaults.pug
 
 block content
   form(action='#', method='post')#box-input.box
-    div.input-control.input-icon
-      i(aria-hidden='true').fa.fa-cube
-      select(name='app')#select-app
-        option(value='') Plilih Aplikasi
-        each app, index in apps
-          option(value=index)= app.title
+    // div.input-control.input-icon
+    //   i(aria-hidden='true').fa.fa-cube
+    //   select(name='app')#select-app
+    //     option(value='') Plilih Aplikasi
+    //     each app, index in apps
+    //       option(value=index)= app.title
     div.input-control.input-icon
       i(aria-hidden='true').fa.fa-link
       input(type='url', name='url', placeholder='URL Address/Alamat Redirect')#input-url
