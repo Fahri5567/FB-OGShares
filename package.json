@@ -1,6 +1,6 @@
 {
   "name": "fb-ogshares",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Generator sharing Facebook App link",
   "main": "index.js",
   "engines": {
@@ -37,10 +37,10 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-    "core-fb-ogshares": "^1.0.2",
+    "core-fb-ogshares": "^1.0.3",
     "cross-env": "^5.2.0",
     "font-awesome": "^4.7.0",
-    "laravel-mix": "^4.0.14",
+    "laravel-mix": "^4.0.15",
     "nodemon": "^1.18.10",
     "normalize.css": "^8.0.1",
     "resolve-url-loader": "^2.3.1",
